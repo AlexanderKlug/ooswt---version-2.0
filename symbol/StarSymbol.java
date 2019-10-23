@@ -1,0 +1,36 @@
+package symbol;
+
+/*
+ * Symbol for multiplication
+ * implemented as singleton
+ */
+public class StarSymbol implements OperatorSymbol {
+	private static final StarSymbol INSTANCE = new StarSymbol();		// singleton
+	
+	/*
+	 * returns the reference to the StarSymbol
+	 */
+	public static StarSymbol getInstance() {
+		return INSTANCE;
+	}
+	
+	/*
+	 * overrides the default implementation of equals
+	 */
+	public boolean equals(Object obj) {
+		return obj == INSTANCE;
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.handleStarSymbol(this);
+	}
+	
+	/*
+	 * overrides the default implementation of toString
+	 */
+	public String toString() {
+		return "StarSymbol";
+	}
+
+}
