@@ -36,7 +36,7 @@ public abstract class State {
 	 * sets a new SelectionState
 	 */
 	public void endOfProcessing( ) {
-		this.getCurrentScanner().setCurrentState(new SelectionState(getCurrentScanner(), this.getCurrentScanner().getChar_To_State_Map()));
+		this.getCurrentScanner().setCurrentState(new SelectionState(this.getCurrentScanner()));
 	}
 
 }

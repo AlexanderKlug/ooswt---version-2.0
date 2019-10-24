@@ -14,9 +14,9 @@ public class ErrorState extends State {
 	/*
 	 * constructor
 	 */
-	public ErrorState(Scanner scanner, HashMap<Character, State> map) {
+	public ErrorState(Scanner scanner) {
 		super(scanner);
-		this.char_To_State_Map = map;
+		this.char_To_State_Map = this.getCurrentScanner().getChar_To_State_Map();
 		this.result = new StringBuilder();
 	}
 

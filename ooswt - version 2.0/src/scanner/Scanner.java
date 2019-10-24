@@ -35,7 +35,7 @@ public class Scanner {
 		this.char_To_Symbol_Map.put('7', new DigitState(this));
 		this.char_To_Symbol_Map.put('8', new DigitState(this));
 		this.char_To_Symbol_Map.put('9', new DigitState(this));
-		this.currentState = new SelectionState(this, this.getChar_To_State_Map());
+		this.currentState = new SelectionState(this);
 	}
 	
 	/*
