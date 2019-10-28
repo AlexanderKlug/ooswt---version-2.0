@@ -1,7 +1,6 @@
 package scanner;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import symbol.*;
 
@@ -14,7 +13,6 @@ public class Scanner {
 	private List<Symbol> currentResult;		// list of symbols
 	private State currentState;				//	state of the scanner while converting a string to a list of symbols
 	private String currentExpression;		// string which has to be converted
-	private HashMap<Character, State> char_To_Symbol_Map;		// Hash Map to differentiate the scanned characters 
 	
 	/*
 	 * private constructor
@@ -52,13 +50,6 @@ public class Scanner {
 		this.currentState = state;
 	}
 	
-	/*
-	 * getter method for the attribute char_To_State_Map
-	 */
-	public HashMap<Character, State> getChar_To_State_Map() {
-		return this.char_To_Symbol_Map;
-	}
-
 	/*
 	 * deletes the first character of the attribute currentExpression
 	 */

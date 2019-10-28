@@ -32,7 +32,7 @@ public class ErrorState extends State {
 	 * finishes the scan process of the state
 	 */
 	public void exit() {
-		Scanner.getScanner().addSymbol(new ErrorToken(result.toString()));
+		Scanner.getScanner().addSymbol(new ErrorToken(this.result.toString()));
 	}
 
 }
