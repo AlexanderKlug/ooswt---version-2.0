@@ -31,8 +31,8 @@ public class ErrorToken implements Symbol {
 	}
 	
 	@Override
-	public void accept(Visitor visitor) {
-		visitor.handleErrorToken(this);
+	public void accept(Visitor visitor) throws SymbolException {
+		visitor.handle(this);
 	}
 	
 	/*

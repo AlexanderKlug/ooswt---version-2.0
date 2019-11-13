@@ -28,8 +28,8 @@ public class PlusSymbol implements OperatorSymbol {
 	}
 	
 	@Override
-	public void accept(Visitor visitor) {
-		visitor.handlePlusSymbol(this);
+	public void accept(Visitor visitor) throws SymbolException {
+		visitor.handle(this);
 	}
 	
 	/*

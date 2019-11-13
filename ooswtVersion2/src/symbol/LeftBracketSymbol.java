@@ -28,8 +28,8 @@ public class LeftBracketSymbol implements BracketSymbol {
 	}
 
 	@Override
-	public void accept(Visitor visitor) {
-		visitor.handleLeft_Bracket_Symbol(this);
+	public void accept(Visitor visitor) throws SymbolException {
+		visitor.handle(this);
 	}
 	
 	/*

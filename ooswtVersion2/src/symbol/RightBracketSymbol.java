@@ -28,8 +28,8 @@ public class RightBracketSymbol implements OperatorSymbol {
 	}
 
 	@Override
-	public void accept(Visitor visitor) {
-		visitor.handleRight_Brackte_Symbol(this);
+	public void accept(Visitor visitor) throws SymbolException {
+		visitor.handle(this);;
 	}
 	
 	/*

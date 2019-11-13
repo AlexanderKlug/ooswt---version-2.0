@@ -31,8 +31,8 @@ public class NumberSymbol implements Symbol {
 	}
 	
 	@Override
-	public void accept(Visitor visitor) {
-		visitor.handleNumberSymbol(this);
+	public void accept(Visitor visitor) throws SymbolException {
+		visitor.handle(this);
 	}
 	
 	/*
@@ -41,6 +41,13 @@ public class NumberSymbol implements Symbol {
 	 */
 	public String toString() {
 		return this.value.toString();
+	}
+	
+	/*
+	 * returns the value of the natural number
+	 */
+	public Integer getValue() {
+		return this.value;
 	}
 
 }

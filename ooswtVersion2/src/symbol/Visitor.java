@@ -2,42 +2,42 @@ package symbol;
 
 /*
  * Visitor Pattern for case distinction
+ * includes specifie  d error handling
  */
 public interface Visitor {
 	
 	/*
-	 * how the visitor treats a NumberSymbol
+	 * how to treat NumberSymbols
 	 */
-	public void handleNumberSymbol(NumberSymbol symbol);
+	public void handle(NumberSymbol symbol) throws SymbolException;
+	/*
+	 * how to treat PlusSymbols
+	 */
+	public void handle(PlusSymbol symbol) throws SymbolException;
 	
 	/*
-	 * how the visitor treats a PlusSymbol
+	 * how to treat StarSymbols
 	 */
-	public void handlePlusSymbol(PlusSymbol symbol);
+	public void handle(StarSymbol symbol) throws SymbolException;
 	
 	/*
-	 * how the visitor treats a StarSymbol
+	 * how to treat Left_Bracket_Symbols
 	 */
-	public void handleStarSymbol(StarSymbol symbol);
+	public void handle(LeftBracketSymbol symbol) throws SymbolException;
 	
 	/*
-	 * how the visitor treats a Left_Bracket_Symbol
+	 * how to treat Right_Bracket_Symbols
 	 */
-	public void handleLeft_Bracket_Symbol(LeftBracketSymbol symbol);
+	public void handle(RightBracketSymbol symbol) throws SymbolException;
 	
 	/*
-	 * how the visitor treats a Right_Bracket_Symbol
+	 * how to treat ErrorTokens
 	 */
-	public void handleRight_Brackte_Symbol(RightBracketSymbol symbol);
+	public void handle(ErrorToken symbol) throws SymbolException;
 	
 	/*
-	 * how the visitor treats an ErrorToken
+	 * how to treat EndSymbols
 	 */
-	public void handleErrorToken(ErrorToken symbol);
-	
-	/*
-	 * how trhe visitor treats an EndSymbol
-	 */
-	public void handleEndSymbol(EndSymbol symbol);
+	public void handle(EndSymbol symbol) throws SymbolException;
 
 }

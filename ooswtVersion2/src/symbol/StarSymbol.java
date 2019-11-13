@@ -28,8 +28,8 @@ public class StarSymbol implements OperatorSymbol {
 	}
 
 	@Override
-	public void accept(Visitor visitor) {
-		visitor.handleStarSymbol(this);
+	public void accept(Visitor visitor) throws SymbolException {
+		visitor.handle(this);
 	}
 	
 	/*

@@ -15,7 +15,7 @@ public interface Symbol {
 	 * Visitor Pattern
 	 * Object accepts visitor
 	 */
-	public void accept (Visitor visitor);
+	public void accept (Visitor visitor) throws SymbolException;
 	
 	/*
 	 * returns the symbol description as string

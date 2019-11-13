@@ -28,8 +28,8 @@ public class EndSymbol implements Symbol {
 	}
 
 	@Override
-	public void accept(Visitor visitor) {
-		visitor.handleEndSymbol(this);
+	public void accept(Visitor visitor) throws SymbolException {
+		visitor.handle(this);
 	}
 	
 	/*
