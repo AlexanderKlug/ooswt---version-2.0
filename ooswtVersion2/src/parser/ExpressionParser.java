@@ -15,16 +15,32 @@ public class ExpressionParser extends Parser {
 	public ExpressionParser(List<Symbol> symbols) {
 		super(symbols);
 	}
-
+	/*
+	 * converts a Symbol into an Expression
+	 */
 	public Expression toExpression() throws SymbolException {
-		SummandParser parser = new SummandParser(super.getSymbols());
+		this.myExpression = new SummandParser(super.getSymbols()).toExpression();
 		super.getCurrentSymbol().accept(this);
-		this.myExpression = parser.toExpression();
 		return this.myExpression;
 	}
 	
+	/*
+	 * overrides the default implementation how to handle a PlusSymbol
+	 */
+	public void handle(PlusSymbol symbol) throws SymbolException {
+		super.skip();
+		this.myExpression = new Sum( (Summand) this.myExpression, new ExpressionParser(super.getSymbols()).toExpression());
+	}
 	
-	public void handle(PlusSymbol symbol) {
-		
+	/*
+	 * overrides the default implementation how to handle EndSymbols
+	 */
+	public void handle(EndSymbol symbol) {
+	}
+	
+	/*
+	 * overrides the default implementation how to handle RightBracketSymbols 
+	 */
+	public void handle(RightBracketSymbol symbol) {
 	}
 }

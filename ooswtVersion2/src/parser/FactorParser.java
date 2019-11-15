@@ -2,13 +2,11 @@ package parser;
 
 import java.util.List;
 
-import symbol.BracketSymbol;
-import symbol.LeftBracketSymbol;
-import symbol.NumberSymbol;
-import symbol.RightBracketSymbol;
-import symbol.Symbol;
-import symbol.SymbolException;
+import symbol.*;
 
+/*
+ * converts symbols into NaturalNumbers or BracketExpressions
+ */
 public class FactorParser extends Parser{
 	private Factor myFactor;
 	
@@ -19,17 +17,25 @@ public class FactorParser extends Parser{
 		super(symbols);
 	}
 
-	@Override
-	public Expression toExpression() throws SymbolException {
+	/*
+	 * converts a Symbol into an Expression
+	 */
+	public Factor toExpression() throws SymbolException {
 		super.getCurrentSymbol().accept(this);
 		return this.myFactor;
 	}
 	
+	/*
+	 * overrides the default implementation of how to handle a NumberSymbol
+	 */
 	public void handle(NumberSymbol symbol) throws SymbolException{
 		this.myFactor = new NaturalNumber(Integer.valueOf(symbol.getValue()));
 		super.skip();
 	}
 	
+	/*
+	 * overrides the default implementation of how to handle a LeftBracketExpression
+	 */
 	public void handle(LeftBracketSymbol symbol) throws SymbolException {
 		super.skip();
 		this.myFactor = new BracketExpression(new ExpressionParser(super.getSymbols()).toExpression());
@@ -38,7 +44,7 @@ public class FactorParser extends Parser{
 		}
 		else
 		{
-			throw new SymbolException("unerwartetes " + symbol.toString());
+			throw new SymbolException("missing RightBracketSymbol");
 		}
 	}
 
