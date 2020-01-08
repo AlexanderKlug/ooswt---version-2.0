@@ -9,12 +9,13 @@ import scanner.*;
  */
 public class ConstantsForCaseDistinction {
 	
-	public static final Character leftBracket = '(';		// constant for opening bracket
-	public static final Character rightBracket = ')';		// constant for closing bracket
-	public static final Character star = '*';				// constant for multiplication
-	public static final Character plus = '+';				// constant for addition
-	public static final Character whiteSpace = ' ';			// constant for whitespace
-	public static final Character tab = '	';				// constant for tab
+	public static final Character LEFTBRACKET = '(';		// constant for opening bracket
+	public static final Character RIGHTBRACKET = ')';		// constant for closing bracket
+	public static final Character STAR = '*';				// constant for multiplication
+	public static final Character PLUS = '+';				// constant for addition
+	public static final Character WHITESPACE = ' ';			// constant for whitespace
+	public static final Character TAB = '	';				// constant for tab
+	public static final Character DIVISION = '/';			// constant for division
 	
 	/*
 	 * hash map to convert a char into a state
@@ -22,12 +23,13 @@ public class ConstantsForCaseDistinction {
 	public static final HashMap<Character, State> char_To_State_Map = new HashMap<Character, State>();
 	
 	static {
-		char_To_State_Map.put(leftBracket, new LeftBracketState());
-		char_To_State_Map.put(rightBracket,	new RightBracketState());
-		char_To_State_Map.put(star, new StarState());
-		char_To_State_Map.put(plus, new PlusState());
-		char_To_State_Map.put(whiteSpace,new WhitespaceState());
-		char_To_State_Map.put(tab, new WhitespaceState());
+		char_To_State_Map.put(LEFTBRACKET, new LeftBracketState());
+		char_To_State_Map.put(RIGHTBRACKET,	new RightBracketState());
+		char_To_State_Map.put(STAR, new StarState());
+		char_To_State_Map.put(PLUS, new PlusState());
+		char_To_State_Map.put(WHITESPACE,new WhitespaceState());
+		char_To_State_Map.put(TAB, new WhitespaceState());
+		char_To_State_Map.put(DIVISION, new DivisionState());
 		char_To_State_Map.put('0', new DigitState());
 		char_To_State_Map.put('1', new DigitState());
 		char_To_State_Map.put('2', new DigitState());

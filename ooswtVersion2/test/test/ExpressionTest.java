@@ -1,6 +1,7 @@
 package test;
 
 import parser.*;
+import symbol.StarSymbol;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -50,7 +51,7 @@ public class ExpressionTest {
 		
 		Factor factor1 = new NaturalNumber(3);
 		Summand factor2 = new NaturalNumber(2);
-		Product product = new Product(factor1, factor2);
+		Product product = new Product(factor1, factor2, StarSymbol.getInstance());
 		
 		Sum sum2 = new Sum(product, sum1);
 		

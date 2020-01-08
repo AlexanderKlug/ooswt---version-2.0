@@ -39,5 +39,10 @@ public interface Visitor {
 	 * how to treat EndSymbols
 	 */
 	public void handle(EndSymbol symbol) throws SymbolException;
+	
+	/*
+	 * how to handle DivisionSymbol
+	 */
+	public void handle(DivisionSymbol symbol) throws SymbolException;
 
 }

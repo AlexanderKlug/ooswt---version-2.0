@@ -2,6 +2,7 @@ package parser;
 
 import java.util.List;
 
+import symbol.DivisionSymbol;
 import symbol.EndSymbol;
 import symbol.ErrorToken;
 import symbol.LeftBracketSymbol;
@@ -59,6 +60,11 @@ public abstract class Parser implements Visitor {
 
 	@Override
 	public void handle(EndSymbol symbol) throws SymbolException {
+		throw new SymbolException("unerwartetes " + symbol.toString());
+	}
+	
+	@Override
+	public void handle(DivisionSymbol symbol) throws SymbolException {
 		throw new SymbolException("unerwartetes " + symbol.toString());
 	}
 

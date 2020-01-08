@@ -2,6 +2,7 @@ package parser;
 
 import java.util.List;
 
+import symbol.DivisionSymbol;
 import symbol.EndSymbol;
 import symbol.PlusSymbol;
 import symbol.RightBracketSymbol;
@@ -40,7 +41,7 @@ public class SummandParser extends Parser {
 	public void handle(StarSymbol symbol) throws SymbolException {
 		super.skip();
 		
-		this.mySummand = new Product((Factor) this.mySummand, new SummandParser(super.getSymbols()).toExpression());
+		this.mySummand = new Product((Factor) this.mySummand, new SummandParser(super.getSymbols()).toExpression(), symbol);
 	}
 	
 	/*
@@ -50,9 +51,17 @@ public class SummandParser extends Parser {
 	}
 	
 	/*
-	 * overrides the default implementaion hot to handleRightBracketSymbols
+	 * overrides the default implementation how to handle RightBracket Symbols
 	 */
-	public void handle(RightBracketSymbol symbol) {
+	public void handle(RightBracketSymbol symbol) throws SymbolException {
+	}
+	
+	/*
+	 * overrides the default implementation how to handle Division Symbols
+	 */
+	public void handle(DivisionSymbol symbol) throws SymbolException {
+		super.skip();
+		this.mySummand = new Product((Factor) this.mySummand, new SummandParser(super.getSymbols()).toExpression(), symbol);
 	}
 
 }
