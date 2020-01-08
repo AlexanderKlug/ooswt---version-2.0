@@ -1,11 +1,9 @@
 package test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.junit.jupiter.api.Test;
-
 import scanner.Scanner;
 import symbol.*;
 
@@ -22,7 +20,7 @@ class scannerTest {
 		List<Symbol> result = scanner.toSymbolSequence("5");
 		assertEquals(symbolList, result);
 	}
-	
+
 	@Test
 	void scannerTest2() {
 		List<Symbol> symbolList = new ArrayList<Symbol>();
