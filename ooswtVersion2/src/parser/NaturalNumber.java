@@ -17,4 +17,9 @@ public class NaturalNumber implements Factor {
 		return this.value;
 	}
 
+	@Override
+	public void accept(ExpressionVisitor visitor) {
+		visitor.handle(this);
+	}
+
 }

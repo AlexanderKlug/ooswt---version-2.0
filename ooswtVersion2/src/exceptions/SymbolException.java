@@ -1,9 +1,9 @@
-package symbol;
+package exceptions;
 
 /*
  * Errors which can appear by handling symbols
  */
-public class SymbolException extends java.lang.Exception {
+public class SymbolException extends Exception {
 	
 	/**
 	 * 

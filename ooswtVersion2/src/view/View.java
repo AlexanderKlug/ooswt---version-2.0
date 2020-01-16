@@ -3,10 +3,14 @@ package view;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import parser.Expression;
+
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
+import javax.swing.JTree;
+import javax.swing.JScrollPane;
 
 /*
  * View for application
@@ -24,6 +28,7 @@ public class View extends JFrame {
 	private JTextField enterExpressionTextField;
 
 	private JPanel contentPane;
+	private JScrollPane treeContent;
 
 
 	/**
@@ -32,7 +37,7 @@ public class View extends JFrame {
 	public View() {
 		setTitle("Bearbeitung arithmetischer Ausdr\u00FCcke");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 707, 523);
+		setBounds(100, 100, 942, 633);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -46,7 +51,12 @@ public class View extends JFrame {
 		contentPane.add(this.setEvaluateButton());						// set Button for evaluation of arithmetic expressions
 		contentPane.add(this.setCheckSyntaxButton());					// set Button for syntax check of arithmetic expressions
 
-		contentPane.add(this.setStatusTextField());						// set status TextField for error messages or "Syntax in Ordnung!"
+		contentPane.add(this.setStatusTextField());
+		
+		treeContent = new JScrollPane();
+		treeContent.setBounds(489, 278, 389, 241);
+		contentPane.add(treeContent);									// add tree content
+		
 	}
 	
 	// set TextField for user input
@@ -74,7 +84,7 @@ public class View extends JFrame {
 	// set TextField for status messages like errors or "Syntax in Ordnung!"
 	private JTextField setStatusTextField() {
 		this.statusTextField = new JTextField();
-		statusTextField.setBounds(75, 392, 506, 37);
+		statusTextField.setBounds(75, 543, 803, 37);
 		return this.statusTextField;
 	}
 	
@@ -117,5 +127,21 @@ public class View extends JFrame {
 	// getter for user input TextField
 	public JTextField getEnterExpressionTextField() {
 		return this.enterExpressionTextField;
+	}
+	
+	/*
+	 * sets Syntax Tree of an Expression
+	 */
+	public void setTree(Expression expression) {
+		JTree tree = new JTree();
+		this.treeContent.setViewportView(tree);
+		expression.accept(new RootVisitor(tree));
+	}
+	
+	/*
+	 * removes expression tree from Tree Content
+	 */
+	public void clearTreeContent() {
+		this.treeContent.setViewportView(new JPanel());;
 	}
 }

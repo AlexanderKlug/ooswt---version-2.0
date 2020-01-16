@@ -1,5 +1,7 @@
 package symbol;
 
+import exceptions.SymbolException;
+
 /*
  * Symbol for addition
  * implemented as singleton 
@@ -28,7 +30,7 @@ public class PlusSymbol implements OperatorSymbol {
 	}
 	
 	@Override
-	public void accept(Visitor visitor) throws SymbolException {
+	public void accept(SymbolVisitor visitor) throws SymbolException {
 		visitor.handle(this);
 	}
 	

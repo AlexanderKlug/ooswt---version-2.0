@@ -2,6 +2,7 @@ package parser;
 
 import java.util.List;
 
+import exceptions.SymbolException;
 import symbol.DivisionSymbol;
 import symbol.EndSymbol;
 import symbol.ErrorToken;
@@ -11,14 +12,13 @@ import symbol.PlusSymbol;
 import symbol.RightBracketSymbol;
 import symbol.StarSymbol;
 import symbol.Symbol;
-import symbol.SymbolException;
-import symbol.Visitor;
+import symbol.SymbolVisitor;
 
 /*
  * Parser that converts a list of symbols to an arithmetic expression
  * throws SymbolError if syntax is wrong
  */
-public abstract class Parser implements Visitor {
+public abstract class Parser implements SymbolVisitor {
 	private List<Symbol> symbols;
 	
 	/*
@@ -26,46 +26,6 @@ public abstract class Parser implements Visitor {
 	 */
 	public Parser(List<Symbol> symbols) {
 		this.symbols = symbols;
-	}
-
-	@Override
-	public void handle(NumberSymbol symbol) throws SymbolException {
-		throw new SymbolException("unerwartetes " + symbol.toString());
-	}
-
-	@Override
-	public void handle(PlusSymbol symbol) throws SymbolException {
-		throw new SymbolException("unerwartetes " + symbol.toString());
-	}
-
-	@Override
-	public void handle(StarSymbol symbol) throws SymbolException {
-		throw new SymbolException("unerwartetes " + symbol.toString());
-	}
-
-	@Override
-	public void handle(LeftBracketSymbol symbol) throws SymbolException {
-		throw new SymbolException("unerwartetes " + symbol.toString());
-	}
-
-	@Override
-	public void handle(RightBracketSymbol symbol) throws SymbolException {
-		throw new SymbolException("unerwartetes " + symbol.toSTring());
-	}
-
-	@Override
-	public void handle(ErrorToken symbol) throws SymbolException {
-		throw new SymbolException("unerwartetes " + symbol.toString());
-	}
-
-	@Override
-	public void handle(EndSymbol symbol) throws SymbolException {
-		throw new SymbolException("unerwartetes " + symbol.toString());
-	}
-	
-	@Override
-	public void handle(DivisionSymbol symbol) throws SymbolException {
-		throw new SymbolException("unerwartetes " + symbol.toString());
 	}
 
 	/*
@@ -93,4 +53,9 @@ public abstract class Parser implements Visitor {
 	 * converts a List of symbols into an arithmetic expression
 	 */
 	public abstract Expression toExpression() throws SymbolException;
+	
+	/*
+	 * throws new SymbolException when unexpected symbols appear
+	 */
+	public abstract void errorHandling(Symbol symbol) throws SymbolException;
 }

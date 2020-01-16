@@ -1,8 +1,10 @@
 package controller;
 
 import basic.Constants;
+import exceptions.DivisionException;
+import exceptions.SymbolException;
 import facade.Facade;
-import symbol.SymbolException;
+import parser.Expression;
 import view.View;
 
 /*
@@ -33,12 +35,14 @@ public class Controller {
 	 */
 	public void onEvaluateButtonPressed() {
 		try {
-			this.currentView.getStatusTextField().setText("");									// clears status TextField
+			this.currentView.getStatusTextField().setText("");										// clear status TextField
+			this.currentView.clearTreeContent();													// clear Tree Content
 			String input = this.currentView.getEnterExpressionTextField().getText();
 			Integer result = this.currentFacade.evaluate(input);
 			this.currentView.getResultTextField().setText(result.toString());
-		}catch(SymbolException f) {
-			this.currentView.getResultTextField().setText("");										// clears result TextField
+		}catch(SymbolException | DivisionException f) {
+			this.currentView.getResultTextField().setText("");										// clear result TextField
+			this.currentView.clearTreeContent();													// clear Tree Content
 			this.currentView.getStatusTextField().setText(f.getMessage());							// show error message at status TextField
 		}
 	}
@@ -51,11 +55,12 @@ public class Controller {
 	public void onCheckSyntaxButtonPressed() {
 		try {
 			String input = this.currentView.getEnterExpressionTextField().getText();
-			this.currentFacade.checkSyntax(input);
-			//Expression result = this.currentFacade.checkSyntax(input);
+			Expression result = this.currentFacade.checkSyntax(input);
 			this.currentView.getStatusTextField().setText(Constants.SYNTAXCORRECTLY);
+			this.currentView.setTree(result);
 		} catch(SymbolException f) {
-			this.currentView.getStatusTextField().setText(f.getMessage());
+			this.currentView.clearTreeContent();													// clear Tree Content
+			this.currentView.getStatusTextField().setText(f.getMessage());							// set Error Message
 		}
 	}
 }

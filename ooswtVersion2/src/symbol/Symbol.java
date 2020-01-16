@@ -1,5 +1,7 @@
 package symbol;
 
+import exceptions.SymbolException;
+
 /*
  * symbol in which a character can be converted 
  */
@@ -15,7 +17,7 @@ public interface Symbol {
 	 * Visitor Pattern
 	 * Object accepts visitor
 	 */
-	public void accept (Visitor visitor) throws SymbolException;
+	public void accept(SymbolVisitor visitor) throws SymbolException;
 	
 	/*
 	 * returns the symbol description as string

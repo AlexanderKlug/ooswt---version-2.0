@@ -1,31 +1,45 @@
-        	 	package parser;
+package parser;
 
+import exceptions.DivisionException;
 import symbol.StarSymbol;
 import symbol.Symbol;
 
 /*
  * arithmetic product
  */
-public class Product implements Factor, Summand {
+public class Product implements Summand {
 	private Factor first;
 	private Summand second;
-	private Symbol operator;
 	
 	/*
 	 * constructor
 	 */
-	public Product(Factor first, Summand second, Symbol operator) {
+	public Product(Factor first, Summand second) {
 		this.first = first;
 		this.second = second;
-		this.operator = operator;
 	}
 
 	@Override
-	public Integer evaluate() {
-		if(this.operator == StarSymbol.getInstance()) {
+	public Integer evaluate() throws DivisionException {
 		return this.first.evaluate() * this.second.evaluate();
-		} else {
-		return this.first.evaluate() / this.second.evaluate();
-		}
+	}
+
+	@Override
+	public void accept(ExpressionVisitor visitor) {
+		visitor.handle(this);
+	}
+	
+	/*
+	 * getter for First Part
+	 */
+	public Factor getFirstPart() {
+		return this.first;
+	}
+	
+	/*
+	 * getter for Second Part
+	 */
+	public Summand getSecondPart() {
+		return this.second;
 	}
 }
