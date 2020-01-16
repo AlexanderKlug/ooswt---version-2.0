@@ -1,10 +1,6 @@
-
-import java.util.List;
-
 import controller.Controller;
 import facade.Facade;
 import view.View;
-
 
 /*
  * starts application
