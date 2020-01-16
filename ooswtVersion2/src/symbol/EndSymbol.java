@@ -1,5 +1,7 @@
 package symbol;
 
+import exceptions.SymbolException;
+
 /*
  * Symbol that shows the end of a Symbol List
  * implemented as singleton
@@ -28,7 +30,7 @@ public class EndSymbol implements Symbol {
 	}
 
 	@Override
-	public void accept(Visitor visitor) throws SymbolException {
+	public void accept(SymbolVisitor visitor) throws SymbolException {
 		visitor.handle(this);
 	}
 	

@@ -2,6 +2,7 @@ package parser;
 
 import java.util.List;
 
+import exceptions.SymbolException;
 import symbol.*;
 
 /*
@@ -26,7 +27,7 @@ public class FactorParser extends Parser{
 	}
 	
 	/*
-	 * overrides the default implementation of how to handle a NumberSymbol
+	 * how to handle a NumberSymbol
 	 */
 	public void handle(NumberSymbol symbol) throws SymbolException{
 		this.myFactor = new NaturalNumber(Integer.valueOf(symbol.getValue()));
@@ -34,7 +35,7 @@ public class FactorParser extends Parser{
 	}
 	
 	/*
-	 * overrides the default implementation of how to handle a LeftBracketExpression
+	 * how to handle a LeftBracketExpression
 	 */
 	public void handle(LeftBracketSymbol symbol) throws SymbolException {
 		super.skip();
@@ -46,6 +47,63 @@ public class FactorParser extends Parser{
 		{
 			throw new SymbolException("missing RightBracketSymbol");
 		}
+	}
+
+	
+	/*
+	 * how to handle a PlusSymbol
+	 */
+	@Override
+	public void handle(PlusSymbol symbol) throws SymbolException {
+		this.errorHandling(symbol);
+	}
+
+	/*
+	 * how to handle a StarSymbol
+	 */
+	@Override
+	public void handle(StarSymbol symbol) throws SymbolException {
+		this.errorHandling(symbol);
+	}
+
+	/*
+	 * how to handle a RightBracketSymbol
+	 */
+	@Override
+	public void handle(RightBracketSymbol symbol) throws SymbolException {
+		this.errorHandling(symbol);
+	}
+
+	/*
+	 * how to handle an Error Token
+	 */
+	@Override
+	public void handle(ErrorToken symbol) throws SymbolException {
+		this.errorHandling(symbol);	
+	}
+
+	/*
+	 * how to handle an EndSymbol
+	 */
+	@Override
+	public void handle(EndSymbol symbol) throws SymbolException {
+		this.errorHandling(symbol);
+	}
+
+	/*
+	 * how to handle a DivisionSymbol
+	 */
+	@Override
+	public void handle(DivisionSymbol symbol) throws SymbolException {
+		this.errorHandling(symbol);
+	}
+
+	/*
+	 * throws new SymbolException when unexpected symbols appear
+	 */
+	@Override
+	public void errorHandling(Symbol symbol) throws SymbolException {
+		throw new SymbolException("Gefunden " + symbol.toString() + ", erwartet Zahl oder " + LeftBracketSymbol.getInstance().toString());
 	}
 
 }

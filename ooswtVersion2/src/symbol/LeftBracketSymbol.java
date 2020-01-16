@@ -1,5 +1,7 @@
 package symbol;
 
+import exceptions.SymbolException;
+
 /*
  * Symbol for an opening bracket
  * implemented as singleton
@@ -28,7 +30,7 @@ public class LeftBracketSymbol implements BracketSymbol {
 	}
 
 	@Override
-	public void accept(Visitor visitor) throws SymbolException {
+	public void accept(SymbolVisitor visitor) throws SymbolException {
 		visitor.handle(this);
 	}
 	

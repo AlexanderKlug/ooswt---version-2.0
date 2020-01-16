@@ -1,10 +1,12 @@
 package symbol;
 
+import exceptions.SymbolException;
+
 /*
  * Visitor Pattern for case distinction
- * includes specifie  d error handling
+ * includes specified error handling
  */
-public interface Visitor {
+public interface SymbolVisitor {
 	
 	/*
 	 * how to treat NumberSymbols

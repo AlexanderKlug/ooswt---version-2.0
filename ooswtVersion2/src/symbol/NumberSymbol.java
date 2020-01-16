@@ -1,5 +1,7 @@
 package symbol;
 
+import exceptions.SymbolException;
+
 /*
  * Symbol for natural numbers
  */
@@ -31,7 +33,7 @@ public class NumberSymbol implements Symbol {
 	}
 	
 	@Override
-	public void accept(Visitor visitor) throws SymbolException {
+	public void accept(SymbolVisitor visitor) throws SymbolException {
 		visitor.handle(this);
 	}
 	
