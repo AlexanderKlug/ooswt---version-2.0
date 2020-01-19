@@ -1,2 +1,4 @@
 /ooswtVersion2/out/
 /.idea/
+bin
+*.classpath
