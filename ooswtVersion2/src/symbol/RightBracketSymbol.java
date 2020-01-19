@@ -1,5 +1,7 @@
 package symbol;
 
+import exceptions.SymbolException;
+
 /*
  * Symbol for a closing bracket
  * implemented as singleton
@@ -28,14 +30,14 @@ public class RightBracketSymbol implements OperatorSymbol {
 	}
 
 	@Override
-	public void accept(Visitor visitor) throws SymbolException {
+	public void accept(SymbolVisitor visitor) throws SymbolException {
 		visitor.handle(this);;
 	}
 	
 	/*
 	 * overrides the default implementation of toString
 	 */
-	public String toSTring() {
+	public String toString() {
 		return "Right_Bracket_Symbol";
 	}
 

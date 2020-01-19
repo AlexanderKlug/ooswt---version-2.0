@@ -2,7 +2,7 @@ package parser;
 
 import java.util.List;
 
-
+import exceptions.SymbolException;
 import symbol.*;
 
 
@@ -25,7 +25,7 @@ public class ExpressionParser extends Parser {
 	}
 	
 	/*
-	 * overrides the default implementation how to handle a PlusSymbol
+	 * how to handle a PlusSymbol
 	 */
 	public void handle(PlusSymbol symbol) throws SymbolException {
 		super.skip();
@@ -33,14 +33,62 @@ public class ExpressionParser extends Parser {
 	}
 	
 	/*
-	 * overrides the default implementation how to handle EndSymbols
+	 * how to handle EndSymbols
 	 */
 	public void handle(EndSymbol symbol) {
 	}
 	
 	/*
-	 * overrides the default implementation how to handle RightBracketSymbols 
+	 * how to handle RightBracketSymbols 
 	 */
 	public void handle(RightBracketSymbol symbol) {
+	}
+	
+	/*
+	 * how to handle NumberSymbol
+	 */
+	@Override
+	public void handle(NumberSymbol symbol) throws SymbolException {
+		this.errorHandling(symbol);
+		
+	/*
+	 * how to handle StarSymbol
+	 */
+	}
+	@Override
+	public void handle(StarSymbol symbol) throws SymbolException {
+		this.errorHandling(symbol);
+		
+	/*
+	 * how to handle LeftBracketSymbol
+	 */
+	}
+	@Override
+	public void handle(LeftBracketSymbol symbol) throws SymbolException {
+		this.errorHandling(symbol);
+		
+	/*
+	 * how to handle ErrorToken
+	 */
+	}
+	@Override
+	public void handle(ErrorToken symbol) throws SymbolException {
+		this.errorHandling(symbol);
+		
+	/*
+	 * how to handle Division Symbol
+	 */
+	}
+	@Override
+	public void handle(DivisionSymbol symbol) throws SymbolException {
+		this.errorHandling(symbol);
+	}
+	
+	/*
+	 * throws new SymbolException when unexpected symbols appear
+	 */
+	@Override
+	public void errorHandling(Symbol symbol) throws SymbolException {
+		this.errorHandling(symbol);
 	}
 }

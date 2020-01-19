@@ -10,7 +10,7 @@ public class DivisionState extends State{
 	@Override
 	public void scan(Character c) {
 		Scanner.getScanner().skip();
-		Scanner.getScanner().addSymbol(DivisionSymbol.getDivisionSymbol());
+		Scanner.getScanner().addSymbol(DivisionSymbol.getInstance());
 		Scanner.getScanner().setCurrentState(new SelectionState());
 	}
 
